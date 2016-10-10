@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources": {
-    "ASG-Apache": {
+    "ASGApache": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
         "AvailabilityZones": [
@@ -38,7 +38,7 @@
         ]
       }
     },
-    "ASG-Varnish": {
+    "ASGVarnish": {
       "Type": "AWS::AutoScaling::AutoScalingGroup",
       "Properties": {
         "AvailabilityZones": [
@@ -64,7 +64,7 @@
           },
           {
             "Key": "backend-layer",
-            "Value": "ASG-Apache",
+            "Value": "ASGApache",
             "PropagateAtLaunch": true
           },
           {
@@ -152,7 +152,7 @@
         "Cooldown": "300",
         "ScalingAdjustment": "-1",
         "AutoScalingGroupName": {
-          "Ref": "asgASGApache"
+          "Ref": "ASGApache"
         }
       }
     },
@@ -163,7 +163,7 @@
         "Cooldown": "300",
         "ScalingAdjustment": "1",
         "AutoScalingGroupName": {
-          "Ref": "asgASGApache"
+          "Ref": "ASGApache"
         }
       }
     },
